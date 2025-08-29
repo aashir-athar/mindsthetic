@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mindsthetics
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://mindsthetics.onrender.com
+    healthCheckPath: /
+    autoDeploy: true
+    branch: main

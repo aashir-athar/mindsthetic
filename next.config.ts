@@ -3,7 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Image optimization
   images: {
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [320, 576, 768, 992, 1200, 1920, 2048, 3840], // Matching our breakpoints
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -14,6 +19,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@mui/material', '@mui/icons-material'],
   },
+  output: 'standalone',
   
   // Performance optimizations
   poweredByHeader: false,
