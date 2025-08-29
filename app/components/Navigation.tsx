@@ -33,7 +33,10 @@ const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const isLarge = useMediaQuery(theme.breakpoints.up('lg'));
 
   useEffect(() => {
     const handleScroll = () => {

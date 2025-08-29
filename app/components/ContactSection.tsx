@@ -184,13 +184,16 @@ const ContactSection = () => {
           </Box>
         </motion.div>
 
-        <Grid container spacing={4} sx={{
+        <Box sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
+          gap: 4,
           width: "100%",
           justifyContent: "center",
           alignItems: "center",
         }}>
           {/* Contact Form */}
-          <Grid item xs={12} lg={6}>
+          <Box>
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -218,65 +221,62 @@ const ContactSection = () => {
 
                   <Box component="form" onSubmit={handleSubmit}>
                     {/* First Row - 4 fields */}
-                    <Grid container spacing={3} sx={{ mb: 4 }}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label="Full Name"
-                          value={formData.name}
-                          onChange={handleInputChange('name')}
-                          required
-                          sx={{
-                            '& .MuiOutlinedInput-root': {
-                              borderRadius: 1,
-                            },
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label="Phone Number"
-                          value={formData.phone}
-                          onChange={handleInputChange('phone')}
-                          required
-                          sx={{
-                            '& .MuiOutlinedInput-root': {
-                              borderRadius: 1,
-                            },
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label="Email Address"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange('email')}
-                          required
-                          sx={{
-                            '& .MuiOutlinedInput-root': {
-                              borderRadius: 1,
-                            },
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          label="Treatment of Interest"
-                          value={formData.treatment}
-                          onChange={handleInputChange('treatment')}
-                          placeholder="e.g., HydraFacial, Laser Hair Removal, etc."
-                          sx={{
-                            '& .MuiOutlinedInput-root': {
-                              borderRadius: 1,
-                            },
-                          }}
-                        />
-                      </Grid>
-                    </Grid>
+                    <Box sx={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, 
+                      gap: 3, 
+                      mb: 4 
+                    }}>
+                      <TextField
+                        fullWidth
+                        label="Full Name"
+                        value={formData.name}
+                        onChange={handleInputChange('name')}
+                        required
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: 1,
+                          },
+                        }}
+                      />
+                      <TextField
+                        fullWidth
+                        label="Phone Number"
+                        value={formData.phone}
+                        onChange={handleInputChange('phone')}
+                        required
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: 1,
+                          },
+                        }}
+                      />
+                      <TextField
+                        fullWidth
+                        label="Email Address"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange('email')}
+                        required
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: 1,
+                          },
+                        }}
+                      />
+                      <TextField
+                        fullWidth
+                        label="Treatment of Interest"
+                        value={formData.treatment}
+                        onChange={handleInputChange('treatment')}
+                        placeholder="e.g., HydraFacial, Laser Hair Removal, etc."
+                        sx={{
+                          '& .MuiOutlinedInput-root': {
+                            borderRadius: 1,
+                          },
+                        }}
+                      />
+                    </Box>
 
                     {/* Message Field - Bigger */}
                     <Box sx={{ mb: 4 }}>
@@ -332,10 +332,10 @@ const ContactSection = () => {
                 </CardContent>
               </Card>
             </motion.div>
-          </Grid>
+          </Box>
 
           {/* Contact Information */}
-          <Grid item xs={12} lg={6} sx={{
+          <Box sx={{
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
@@ -444,8 +444,8 @@ const ContactSection = () => {
                 ))}
               </Box>
             </motion.div>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         {/* Locations */}
         <motion.div
@@ -466,9 +466,13 @@ const ContactSection = () => {
               OUR LOCATIONS
             </Typography>
 
-            <Grid container spacing={4}>
+            <Box sx={{ 
+              display: 'grid', 
+              gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, 
+              gap: 4 
+            }}>
               {locations.map((location, index) => (
-                <Grid item xs={12} md={4} key={location.name}>
+                <Box key={location.name}>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -553,9 +557,9 @@ const ContactSection = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
         </motion.div>
       </Container>
